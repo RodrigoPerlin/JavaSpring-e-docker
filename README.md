@@ -17,7 +17,13 @@ http://localhost:8080
 
 Adminer:
 Acesso->
+
+Sistema: MySQL
+
 servidor:mysqlsrv
+
 usuário:root
+
 senha:MySql2019!
+
 Base de dados:(deixar em branco)
