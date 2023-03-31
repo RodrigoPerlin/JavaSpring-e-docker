@@ -3,8 +3,7 @@ Crud, básico para aprendizado
 
 Dentro da pasta principal use o docker-compose para subir os conteiners do banco, e do Adminer;
 comandodo necessário:docker-compose up
-
-Portas->
+______________________________________________________________________________________________________
 
 Java
 http://localhost:8000
@@ -15,8 +14,11 @@ http://localhost:3306
 Adminer
 http://localhost:8080
 
+______________________________________________________________________________________________________
+
+
 Adminer:
-Acesso->
+Acesso->http://localhost:8080
 
 Sistema: MySQL
 
