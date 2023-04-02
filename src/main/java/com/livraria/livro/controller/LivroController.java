@@ -1,6 +1,8 @@
 package com.livraria.livro.controller;
 
 import com.livraria.livro.entity.Livro;
+import com.livraria.livro.model.AtualizaLivroFormDTO;
+import com.livraria.livro.model.LivroDTO;
 import com.livraria.livro.repository.LivroRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +26,9 @@ public class LivroController {
 
     @PostMapping
     @Transactional
-    public List<Livro> salvar(@RequestBody Livro livro) {
+    public LivroDTO salvar(@RequestBody Livro livro) {
         livroRepository.save(livro);
-        return Arrays.asList(livro);
+        return new LivroDTO(livro);
     }
 
     @DeleteMapping({"{isbn}"})
@@ -38,5 +40,18 @@ public class LivroController {
             return "Foi deletado livro com isbn:" + isbn;
         }
         return "Não foi encotrado o livro com isbn:" + isbn;
+    }
+
+    @Transactional
+    @PutMapping("/atualizar")
+    public Livro atualizar(@RequestBody Livro form) {
+
+        final Optional<Livro> optLivro = livroRepository.findById(form.getIsbn());
+
+        if (optLivro.isPresent()) {
+            livroRepository.saveAndFlush(form);
+            return form;
+        }
+        return null;
     }
 }
